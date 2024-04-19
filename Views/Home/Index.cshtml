@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @{
+        <h1 class="display-4">Welcome</h1>
+        if (!User.Identity.IsAuthenticated)
+        {
+            <p>Please Login/Register to start Fun Fox Task </p>
+        }
+        else if(User.Identity.IsAuthenticated)
+        {
+            if(User.IsInRole("admin"))
+            {
+                <p>Please click <a asp-controller="Course" asp-action="Index">here</a> to manage Courses and User Enrollments</p>
+            }
+            <p>Please click <a asp-controller="Enrollment" asp-action="Index">here</a> to start register courses </p>
+        }
+    }
+</div>
